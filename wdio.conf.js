@@ -26,12 +26,13 @@ exports.config = {
     //
     specs: [
         // ToDo: define location for spec files here
-        'C:/Users/Sohan/Desktop/mobile_automation_home/test/sample_test1.js'
+      'C:/Users/PC-STIL-084/Desktop/aamarPay_automation_test-master/aamarPay_automation_test-master/test/sample_test1.js'
     ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
+   
     //
     // ============
     // Capabilities

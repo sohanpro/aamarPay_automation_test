@@ -1,15 +1,15 @@
 const assert = require('chai').assert;
-describe("sample",function() {
-it('sample test',async function()
+describe("Side Bar functionality",function() {
+it('All button functionality working fine',async function()
 {
-    const elementId = "com.android.permissioncontroller:id/permission_allow_button";
-    const element = await driver.findElement('id', elementId);
+    //const elementId = "com.android.permissioncontroller:id/permission_allow_button";
+   // const element = await driver.findElement('id', elementId);
 
 
-    await $(element).click();
+   // await $(element).click();
 
 
-    const xpathExpression = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText";
+    const xpathExpression = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText";
     const elements = await $$(xpathExpression);
     
     const firstelement = elements[0];
@@ -51,7 +51,63 @@ const login = await $(xpathforloginButton);
 await login.click();
 
 
-});    
+//click the side bar button
+const xpathforsidebarbutton = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]";
+const sidebarbutton = await $(xpathforsidebarbutton);
+await sidebarbutton.click();
+
+//check if all button of side working fine
+const xpathForHomeButton = "//android.widget.ImageView[@content-desc='Home']";
+await $(xpathForHomeButton).click();
+await sidebarbutton.click();
+const xpathForOrderHistory = "//android.widget.ImageView[@content-desc='Order History']";
+await $(xpathForOrderHistory).click();
+//define and press the back button
+const xpathForBackButton = "//android.widget.Button[@content-desc='Back']"
+await $(xpathForBackButton).click();
+//define the setting button
+const xpathforSetting = "//android.widget.ImageView[@content-desc='Settings']";
+
+await $(xpathforSetting).click();
+
+//press back button again
+await $(xpathForBackButton).click();
+//define Ekyc button
+const xpathforEkyc = "//android.widget.ImageView[@content-desc='EKYC']";
+await $(xpathforEkyc).click();
+//presss back button again
+await $(xpathForBackButton).click();
+//press refer a friend button
+const xpathForfriend = "//android.widget.ImageView[@content-desc='Refer a friend']";
+$(xpathForfriend).click()
+//press the back button again
+await $(xpathForBackButton).click();
+//define terms & conditions
+const xpathForTerms = "//android.widget.ImageView[@content-desc='Terms & Condition']";
+await $(xpathForTerms).click();
+//press the back button again
+await $(xpathForBackButton).click();
+
+//define privacy
+const xpathForprivacy = "//android.widget.ImageView[@content-desc='Privacy policy']";
+await $(xpathForprivacy).click();
+//press the back button again
+await $(xpathForBackButton).click();
+
+
+
+
+
+
+
+}); 
+it("Recharge Functionality",async function()
+{
+    const xpathforslidebar = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View"
+    await $(xpathforslidebar)
+   const xpathforRecharge = "//android.widget.ImageView[@content-desc='Recharge']";
+   await $(xpathforRecharge).click();
+});   
 });
 
 
