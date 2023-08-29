@@ -7,7 +7,7 @@ it('All button functionality working fine',async function()
 
 
    // await $(element).click();
-
+   //setTimeout(5000);
 
     const xpathExpression = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText";
     const elements = await $$(xpathExpression);
@@ -49,6 +49,7 @@ await showpass.click();
 const xpathforloginButton = "//android.view.View[@content-desc='Login']";
 const login = await $(xpathforloginButton);
 await login.click();
+browser.pause(5000);
 
 
 //click the side bar button
@@ -93,6 +94,14 @@ const xpathForprivacy = "//android.widget.ImageView[@content-desc='Privacy polic
 await $(xpathForprivacy).click();
 //press the back button again
 await $(xpathForBackButton).click();
+const x = 1000;
+const y = 300;
+
+await driver.touchAction({
+    action: 'tap',
+    x,
+    y,
+});
 
 
 
@@ -104,11 +113,10 @@ await $(xpathForBackButton).click();
 it("Recharge Functionality",async function()
 {
     const xpathforslidebar = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View"
-    await $(xpathforslidebar)
+    await $(xpathforslidebar).click();
    const xpathforRecharge = "//android.widget.ImageView[@content-desc='Recharge']";
    await $(xpathforRecharge).click();
 });   
 });
-
 
 
