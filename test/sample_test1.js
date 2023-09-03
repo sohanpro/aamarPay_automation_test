@@ -1,13 +1,15 @@
+const { expect } = require('chai');
+
 const assert = require('chai').assert;
-describe("Side Bar functionality",function() {
-it('All button functionality working fine',async function()
-{
-    //const elementId = "com.android.permissioncontroller:id/permission_allow_button";
+context("Side Bar functionality", function() {
+    beforeEach(async function(){
+        //const elementId = "com.android.permissioncontroller:id/permission_allow_button";
    // const element = await driver.findElement('id', elementId);
 
 
    // await $(element).click();
    //setTimeout(5000);
+  //await driver.shake();
 
     const xpathExpression = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText";
     const elements = await $$(xpathExpression);
@@ -49,6 +51,10 @@ await showpass.click();
 const xpathforloginButton = "//android.view.View[@content-desc='Login']";
 const login = await $(xpathforloginButton);
 await login.click();
+      })
+it('All button functionality working fine',async function()
+{
+    
 browser.pause(5000);
 
 
@@ -110,13 +116,50 @@ await driver.touchAction({
 
 
 }); 
-it("Recharge Functionality",async function()
+it.only("Recharge Functionality",async function()
 {
     const xpathforslidebar = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View"
     await $(xpathforslidebar).click();
-   const xpathforRecharge = "//android.widget.ImageView[@content-desc='Recharge']";
+   const xpathforRecharge = '//android.widget.ImageView[@content-desc="Recharge"]';
    await $(xpathforRecharge).click();
+   const xpathForPermissionToast = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View";
+   await $(xpathForPermissionToast).isExisting();
+   const xpathforGrantpermission = "//android.widget.Button[@content-desc='Continue']"
+   await $(xpathforGrantpermission).click();
+   const xpathforallowpermission = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]"
+   await $(xpathforallowpermission).click();
+
+   const searchNameArray = ["Abrar","akhi 2", "+8801718141535","01718141535","01936106680","01936702592"]
+   const queryResults = await Promise.all(
+    searchNameArray.map(async function (data)
+    {
+        try{
+        const SearchInputInRechargePanel = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText";
+        await $(SearchInputInRechargePanel).setValue(data)
+        const SearchResultElement = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[5]"
+
+        const actualResult = await Promise.all(
+            SearchResultElement.map(async function(data)
+            {
+                console.log(data.getText())
+                return data.getText();
+                
+            })
+            
+        )
+        }
+        catch(error)
+        {
+            console.error("error is: ",error)
+        }
+
+        })
+    
+   )
+   
+
+
+
 });   
 });
-
 
