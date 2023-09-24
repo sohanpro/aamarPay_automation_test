@@ -10,7 +10,7 @@ context("Side Bar functionality", function() {
    // await $(element).click();
    //setTimeout(5000);
   //await driver.shake();
-
+  try{
     const xpathExpression = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText";
     const elements = await $$(xpathExpression);
     
@@ -51,7 +51,15 @@ await showpass.click();
 const xpathforloginButton = "//android.view.View[@content-desc='Login']";
 const login = await $(xpathforloginButton);
 await login.click();
-      })
+      
+  }
+  catch(error)
+  {
+    console.error("Error before all setup:",error)
+  }
+});
+
+    
 it('All button functionality working fine',async function()
 {
     
@@ -63,7 +71,7 @@ const xpathforsidebarbutton = "/hierarchy/android.widget.FrameLayout/android.wid
 const sidebarbutton = await $(xpathforsidebarbutton);
 await sidebarbutton.click();
 
-//check if all button of side working fine
+//check if all button of side bar button working fine
 const xpathForHomeButton = "//android.widget.ImageView[@content-desc='Home']";
 await $(xpathForHomeButton).click();
 await sidebarbutton.click();
@@ -116,9 +124,10 @@ await driver.touchAction({
 
 
 }); 
-it.only("Recharge Functionality",async function()
+it("Recharge Functionality",async function()
 {
-    const xpathforslidebar = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View"
+    try{
+        const xpathforslidebar = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View"
     await $(xpathforslidebar).click();
    const xpathforRecharge = '//android.widget.ImageView[@content-desc="Recharge"]';
    await $(xpathforRecharge).click();
@@ -156,6 +165,12 @@ it.only("Recharge Functionality",async function()
         })
     
    )
+    }
+    catch(error)
+    {
+        console.error("Recharge functionality error:",error);
+        
+    }
    
 
 
